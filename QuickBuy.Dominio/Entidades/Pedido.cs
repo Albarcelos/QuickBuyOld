@@ -6,7 +6,7 @@ using System.Text;
 
 namespace QuickBuy.Dominio.Entidades
 {
-    class Pedido : Entidade
+    public class Pedido : Entidade
     {
         public int Id { get; set; }
         public DateTime DataPedido { get; set; }
@@ -28,9 +28,13 @@ namespace QuickBuy.Dominio.Entidades
         public override void Validate()
         {
             if(!ItensPedido.Any())
-                AdicionarMensagem("Crítica - Pedido não pode ficar sem item de pedido.");
+                AdicionarCritica("Crítica - Pedido não pode ficar sem item de pedido.");
+
             if (string.IsNullOrEmpty(CEP))
-                AdicionarMensagem("Crítica - CEP deve estar peenchido.");
+                AdicionarCritica("Crítica - CEP deve estar peenchido.");
+
+            if (FormaPagamentoId == 0)
+                AdicionarCritica("Crítica - Não foi informado a forma de pagamenmto.");
         }
     }
 }

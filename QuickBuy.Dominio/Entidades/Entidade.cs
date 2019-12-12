@@ -18,7 +18,7 @@ namespace QuickBuy.Dominio.Entidades
             mensagemValidacao.Clear();
         }
 
-        protected void AdicionarMensagem(string mensagem)
+        protected void AdicionarCritica(string mensagem)
         {
             mensagemValidacao.Add(mensagem);
         }
